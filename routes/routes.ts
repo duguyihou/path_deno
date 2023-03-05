@@ -1,12 +1,17 @@
-import { Router } from "../dep.ts";
-import { tpRouter } from "./tripPlanner.ts";
+import { tpRouter } from "../modules/tripPlanner/mod.ts";
+import { composeMiddleware, Context, Middleware, Router } from "../dep.ts";
 
-const router = new Router({prefix:'/api/v1'});
+const combineRouters = (routers: Router[]) => {
+  const middleware: Middleware<
+    Record<string, unknown>,
+    Context<Record<string, unknown>, Record<string, unknown>>
+  >[] = [];
 
-router.get("/", (ctx) => {
-  ctx.response.body = "Hello Path";
-});
+  routers.forEach((router) => {
+    middleware.push(router.routes());
+    middleware.push(router.allowedMethods());
+  });
+  return composeMiddleware(middleware);
+};
 
-router.use(tpRouter.routes(), tpRouter.allowedMethods());
-
-export { router };
+export const routers = combineRouters([tpRouter]);

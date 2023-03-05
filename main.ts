@@ -1,7 +1,7 @@
 import { Application } from "./dep.ts";
-import { router } from "./routes/routes.ts";
+import { routers } from "./routes/routes.ts";
 const app = new Application();
 
-app.use(router.routes(), router.allowedMethods());
+app.use(routers);
 
 await app.listen({ port: 8000 });
