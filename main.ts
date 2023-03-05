@@ -1,8 +1,8 @@
 import { Application } from "./dep.ts";
+import { routers } from "./routes/routes.ts";
+
 const app = new Application();
 
-app.use((ctx) => {
-  ctx.response.body = "Hello World!";
-});
+app.use(routers);
 
 await app.listen({ port: 8000 });
