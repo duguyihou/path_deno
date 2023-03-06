@@ -7,6 +7,7 @@ const stopFinderHandler = async (ctx: TPContext<"/stop_finder/:name_sf">) => {
 
   try {
     const result = await tpService.stopFinder(name_sf);
+    console.log("🐵 result ------ ", result);
     ctx.response.body = result;
   } catch (error) {
     console.error("sp error", error);
