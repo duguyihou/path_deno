@@ -12,7 +12,7 @@ const stopFinder = async (name_sf: string) => {
     `version=10.2.1.42`,
   ].join("&");
 
-  const url = `${baseUrl}/v1/tp/stop_finder?${params}`;
+  const url = `https://api.transport.nsw.gov.au/v1/tp/stop_finder?${params}`;
   console.log("🐵  url------ ", url);
 
   const sfResponse = await fetch(url, {
