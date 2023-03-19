@@ -22,6 +22,7 @@ const stopFinder = async (name_sf: string) => {
   });
   if (sfResponse.ok) {
     const sfResponseJson = await sfResponse.json();
+    console.log('🐵 data ------ ', sfResponseJson)
     return sfResponseJson;
   }
 };
