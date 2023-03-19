@@ -17,7 +17,7 @@ const stopFinder = async (name_sf: string) => {
 
   const sfResponse = await fetch(url, {
     headers: {
-      Authorization: `apikey ${apiKey}`,
+      Authorization: `apikey ${Deno.env.get("API_KEY")}`,
     },
   });
   if (sfResponse.ok) {
