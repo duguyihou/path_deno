@@ -1,6 +1,6 @@
 import { dotenv } from "../dep.ts";
 
-const config = await dotenv.load({export:true});
+const config = await dotenv.load({export:true, envPath:'../.env'});
 
 const configService = {
   baseUrl: config["BASE_URL"],
