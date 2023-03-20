@@ -1,7 +1,7 @@
 import configService from "../../config/configService.ts";
 
 const stopFinder = async (name_sf: string) => {
-  const {baseUrl, apiKey}= configService
+  const { baseUrl, apiKey } = configService;
   const params = [
     `outputFormat=rapidJSON`,
     `type_sf=any`,
@@ -10,10 +10,10 @@ const stopFinder = async (name_sf: string) => {
     `TfNSWSF=true`,
     `version=10.2.1.42`,
   ].join("&");
-  
+
   const url = `${baseUrl}/v1/tp/stop_finder?${params}`;
-  console.log('🐵 url ------ ', url)
-  console.log('🐵 apiKey ------ ', apiKey)
+  console.log("🐵 url ------ ", url);
+  console.log("🐵 apiKey ------ ", apiKey);
   const sfResponse = await fetch(url, {
     headers: {
       Authorization: `apikey ${apiKey}`,
