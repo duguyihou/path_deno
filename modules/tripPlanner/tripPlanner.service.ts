@@ -12,6 +12,8 @@ const stopFinder = async (name_sf: string) => {
   ].join("&");
   
   const url = `${baseUrl}/v1/tp/stop_finder?${params}`;
+  console.log('🐵 url ------ ', url)
+  console.log('🐵 apiKey ------ ', apiKey)
   const sfResponse = await fetch(url, {
     headers: {
       Authorization: `apikey ${apiKey}`,
