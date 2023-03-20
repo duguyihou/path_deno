@@ -1,7 +1,4 @@
-import configService from "../../config/configService.ts";
-
 const stopFinder = async (name_sf: string) => {
-  const { baseUrl, apiKey } = configService;
   const params = [
     `outputFormat=rapidJSON`,
     `type_sf=any`,
@@ -11,12 +8,13 @@ const stopFinder = async (name_sf: string) => {
     `version=10.2.1.42`,
   ].join("&");
 
+  const url = `${Deno.env.get("BASE_URL")}/v1/tp/stop_finder?${params}`;
+  console.log("🐵 url ------ ", Deno.env.get("BASE_URL"));
+  console.log("🐵 apiKey ------ ", Deno.env.get("API_KEY"));
   const url = `${baseUrl}/v1/tp/stop_finder?${params}`;
-  console.log("🐵 url ------ ", url);
-  console.log("🐵 apiKey ------ ", apiKey);
   const sfResponse = await fetch(url, {
     headers: {
-      Authorization: `apikey ${apiKey}`,
+      Authorization: `apikey ${Deno.env.get("API_KEY")}`,
     },
   });
   if (sfResponse.ok) {
