@@ -12,12 +12,13 @@ const stopFinder = async (name_sf: string) => {
   const sfResponse = await fetch(url, {
     headers: {
       Authorization: `apikey ${Deno.env.get("API_KEY")}`,
+      "Content-Type": "application/json",
     },
   });
-  console.log('🐵 sfResponse ------ ', sfResponse)
+  console.log("🐵 sfResponse ------ ", sfResponse);
   if (sfResponse.ok) {
     const sfResponseJson = await sfResponse.json();
-    console.log('🐵  sfResponseJson------ ', sfResponseJson)
+    console.log("🐵  sfResponseJson------ ", sfResponseJson);
     return sfResponseJson;
   }
 };
