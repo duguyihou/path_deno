@@ -14,8 +14,10 @@ const stopFinder = async (name_sf: string) => {
       Authorization: `apikey ${Deno.env.get("API_KEY")}`,
     },
   });
+  console.log('🐵 sfResponse ------ ', sfResponse)
   if (sfResponse.ok) {
     const sfResponseJson = await sfResponse.json();
+    console.log('🐵  sfResponseJson------ ', sfResponseJson)
     return sfResponseJson;
   }
 };
