@@ -8,10 +8,9 @@ const stopFinder = async (name_sf: string) => {
     `version=10.2.1.42`,
   ].join("&");
 
-  const url = `${Deno.env.get("BASE_URL")}/v1/tp/stop_finder?${params}`;
   console.log("🐵 url ------ ", Deno.env.get("BASE_URL"));
   console.log("🐵 apiKey ------ ", Deno.env.get("API_KEY"));
-  const url = `${baseUrl}/v1/tp/stop_finder?${params}`;
+  const url = `${Deno.env.get("BASE_URL")}/v1/tp/stop_finder?${params}`;
   const sfResponse = await fetch(url, {
     headers: {
       Authorization: `apikey ${Deno.env.get("API_KEY")}`,
