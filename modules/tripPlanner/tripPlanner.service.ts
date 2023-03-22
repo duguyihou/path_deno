@@ -12,7 +12,7 @@ const stopFinder = async (name_sf: string) => {
   const sfResponse = await fetch(url, {
     headers: {
       Authorization: `apikey ${Deno.env.get("API_KEY")}`,
-      "Content-Type": "application/json",
+      "Content-Type": "text/xml;charset=utf-8",
     },
   });
   console.log("🐵 sfResponse ------ ", sfResponse);
