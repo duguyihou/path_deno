@@ -1,4 +1,4 @@
-const stopFinder = async (name_sf: string) => {
+const stopFinder = (name_sf: string) => {
   const params = [
     `outputFormat=rapidJSON`,
     `type_sf=any`,
@@ -9,18 +9,15 @@ const stopFinder = async (name_sf: string) => {
   ].join("&");
 
   const url = `${Deno.env.get("BASE_URL")}/v1/tp/stop_finder?${params}`;
-  const sfResponse = await fetch(url, {
+  const response = fetch(url, {
+    method: "GET",
     headers: {
       Authorization: `apikey ${Deno.env.get("API_KEY")}`,
       accept: "application/json",
     },
-  });
-  console.log("🐵 sfResponse ------ ", sfResponse);
-  if (sfResponse.ok) {
-    const sfResponseJson = await sfResponse.json();
-    console.log("🐵  sfResponseJson------ ", sfResponseJson);
-    return sfResponseJson;
-  }
+  }).then((response) => response.json());
+  console.log("🐵 response ------ ", response);
+  return response;
 };
 
 const tpService = { stopFinder };
