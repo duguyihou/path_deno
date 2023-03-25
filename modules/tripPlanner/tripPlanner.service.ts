@@ -9,15 +9,18 @@ const stopFinder = (name_sf: string) => {
   ].join("&");
 
   const url = `${Deno.env.get("BASE_URL")}/v1/tp/stop_finder?${params}`;
-  const response = fetch(url, {
+
+  const response = await fetch(url, {
     method: "GET",
     headers: {
       Authorization: `apikey ${Deno.env.get("API_KEY")}`,
       accept: "application/json",
     },
-  }).then((response) => response.json());
+  });
+
   console.log("🐵 response ------ ", response);
-  return response;
+  const data = await response.json();
+  return data;
 };
 
 const tpService = { stopFinder };
