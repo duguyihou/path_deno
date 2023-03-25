@@ -9,6 +9,7 @@ const stopFinder = async (name_sf: string) => {
   ].join("&");
 
   const url = `${Deno.env.get("BASE_URL")}/v1/tp/stop_finder?${params}`;
+  console.log("🐵 url ------ ", url);
   const response = await fetch(url, {
     method: "GET",
     headers: {
