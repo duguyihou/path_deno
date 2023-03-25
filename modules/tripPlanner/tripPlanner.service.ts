@@ -1,4 +1,4 @@
-const stopFinder = async (name_sf: string) => {
+const stopFinder = (name_sf: string) => {
   const params = [
     `outputFormat=rapidJSON`,
     `type_sf=any`,
@@ -9,6 +9,7 @@ const stopFinder = async (name_sf: string) => {
   ].join("&");
 
   const url = `${Deno.env.get("BASE_URL")}/v1/tp/stop_finder?${params}`;
+
   const response = await fetch(url, {
     method: "GET",
     headers: {
