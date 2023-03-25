@@ -16,11 +16,9 @@ const stopFinder = async (name_sf: string) => {
       Authorization: `apikey ${Deno.env.get("API_KEY")}`,
       accept: "application/json",
     },
-  });
+  }).then((res) => res.json());
 
-  console.log("🐵 response ------ ", response);
-  const data = await response.json();
-  return data;
+  return response;
 };
 
 const tpService = { stopFinder };
